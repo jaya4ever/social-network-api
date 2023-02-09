@@ -91,17 +91,17 @@ module.exports = {
     // delete reaction 
     deleteReaction(req, res) {
         Thought.findOneAndUpdate(
-            {
-                _id: req.params.thoughtId
-            },
+            { _id: req.params.thoughtId },
             { $pull: { reactions: { reactionId: req.params.reactionId } } },
-            { runValidators: true, new: true }
-        )
-            .then((thought) =>
-                !thought
-                    ? res.status(404).json({ message: "No thought find with this id" })
-                    : res.json(thought)
-            )
-            .catch((err) => res.status(500).json(err))
-    },
+            { new: true })
+            .then(thought => {
+                if (!thought) {
+                    res.status(404).json({ message: 'No thought with that ID' });
+                    return;
+                }
+                res.json(thought);
+            })
+            .catch(err => res.status(400).json(err));
+    }
+
 };
