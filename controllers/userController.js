@@ -78,16 +78,18 @@ module.exports = {
   //delete a friend
   deleteFriend(req, res) {
     User.findOneAndUpdate(
-      { _id: req.params.userId },
-      { $pull: { friends: req.params.friendId } },
-      { new: true }
-    )
-      .then(
-        (user) =>
-          !user
-            ? res.status(404).json({ message: "No User find with this ID!" })
-            : res.json(user)
-      )
-      .catch((err) => res.status(500).json(err));
-  },
+        {_id: req.params.userId},
+        {$pull: { friends: req.params.friendId}},
+        {new: true})
+    .populate({path: 'friends', select: '-__v'})
+    .select('-__v')
+    .then(user => {
+        if(!user) {
+            res.status(404).json({message: 'No user with that ID!'});
+            return;
+        }
+        res.json(user);
+    })
+    .catch(err => res.status(400).json(err.message));
+}
 };
