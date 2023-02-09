@@ -1,4 +1,4 @@
-const router = requite('express').Router();
+const router = require('express').Router();
 
 const {
     getThought,
@@ -11,7 +11,11 @@ const {
 } = require('../../controllers/thoughtController');
 
 // /api/thoughts GET all and POST thought
-router.route('/').get(getThought).post(createThought);
+router.route('/').get(getThought)
+
+router.route('/:userId')
+.post(createThought);
+
 
 // /api/thoughts/:thoughtID GET one thought, PUT and DELETE by iD
 router.route('/:thoughtId').get(getSingleThought)
