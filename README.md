@@ -4,6 +4,7 @@ Social Network API
 ### This is Module 18 challenge which I named social-network-api. This is an API for a social network web application where users can share their thoughts, react to friends' thoughts, and create a friend list.It uses Express.js for routing, a MongoDB database, the Mongoose ODM, and Moment.js to format timestamps. The seed data is created using Insomnia.
 
 ### This is my GitHub Repo
+[GitHub](https://github.com/jaya4ever/social-network-api)
 
 ### Here is the Video demonstartion:
 [social-network-api.webm](https://user-images.githubusercontent.com/111536082/218639290-b90a0f84-0bb0-45d0-bc9f-94e51565c2c5.webm)
@@ -61,4 +62,4 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 
 ## License
 
-  Copyright (c) 2023 [GitHub](https://github.com/jaya4ever/social-network-api)  **Note** This application is under the [MIT](https://MIT-license.org)
+  Copyright (c) 2023 [GitHub](https://github.com/jaya4ever)  **Note** This application is under the [MIT](https://MIT-license.org)
